@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+</head>
+<body>
+<div class = 'container'>
+	<div class = 'jumbotron text-center'>
+		<h1> Captain Planet: The Game!</h1>
+		<p>Rated M for Mature</p>
+		<hr>
+		<button class = 'btn btn-warning btn-xs'>Play theme!</button>
+		<button class = 'btn btn-default btn-xs'>Pause song</button>
+	</div>
+	<div class = 'row'>
+		<div class = 'col-lg-6'>
+			<div class = 'row'>
+				<div class = 'panel panel-default'>
+					<div class = 'panel-heading'>
+						<h4>Superpowers: </h4>
+					</div>
+					<div class = 'panel-body text-center'>
+						<button class = 'btn btn-default text-center' id = 'change'><span class = 'glyphicon glyphicon-fire'></span> Change to Don</button>
+						<button class = 'btn btn-primary text-center' id = 'explode'><span class = 'glyphicon glyphicon-minus-sign'></span> Shrink</button>
+					</div>
+				</div>
+			</div>
+			<div class = 'row'>
+				<div class = 'panel panel-default'>
+					<div class = 'panel-heading'>
+						<h4>Superpowers! Invisibility </h4>
+					</div>
+					<div class = 'panel-body text-center'>
+						<button class = 'btn btn-default text-center' id = "hide"><span class = 'glyphicon glyphicon-eye-close'></span> Invisible</button>
+						<button class = 'btn btn-primary text-center' id = "show"><span class = 'glyphicon glyphicon-eye-open'></span> Visible</button>
+					</div>
+				</div>
+			</div>
+			<div class = 'row'>
+				<div class = 'panel panel-default'>
+					<div class = 'panel-heading'>
+						<h4>Controls</h4>
+					</div>
+					<div class = 'panel-body text-center'>
+						<div><button class = 'btn btn-danger text-center' id = 'up'><span class = 'glyphicon glyphicon-arrow-up'></span></button></div>
+						<div>
+							<button class = 'btn btn-danger text-center' id = 'left'><span class = 'glyphicon glyphicon-arrow-left'></span></button>
+							<button class = 'btn btn-danger text-center' id = 'down'><span class = 'glyphicon glyphicon-arrow-down'></span></button>
+							<button class = 'btn btn-danger text-center' id = 'right'><span class = 'glyphicon glyphicon-arrow-right'></span></button>
+						</div>
+						<div>
+							<button class = 'btn btn-primary text-center' id = 'clear'><span class = 'glyphicon glyphicon-thumbs-up'></span> Clear</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class = 'col-lg-6 text-center' id = 'pic'>
+			<img src = "captainplanet.jpg" width = 75%>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function (){
+	$('#change').on('click', function(){
+		$('#pic').empty();
+		$('#pic').append("<img src = 'donc.jpg'><p>Captain Planet, mother fucker!</p>")
+	});
+	$('#explode').on('click', function(){
+		$('#pic').toggle('explode');
+	})
+	$('#hide').on('click', function(){
+		$('#pic').animate({opacity: 0.05});
+	});
+	$('#show').on('click', function(){
+		$('#pic').animate({opacity: 1.0});
+	});
+	$('#up').on('click', function(){
+		$('#pic').animate({top: "-=100px"});
+	});
+	$('#down').on('click', function(){
+		$('#pic').animate({top: "+=100px"});
+	});
+	$('#left').on('click', function(){
+		$('#pic').animate({left: "-=100px"});
+	});
+	$('#right').on('click', function(){
+		$('#pic').animate({left: "+=100px"});
+	});
+	$('#clear').on('click', function(){
+		$('#pic').animate({top: "0px", left: "0px"});
+	});
+
+	$(document).on('keyup', function(a){
+		switch(a.which){
+			case 40: $('#pic').animate({top: "+=100px"});
+			case 39: $('#pic').animate({left: "+=100px"});
+			case 38: $('#pic').animate({top: "-=100px"});
+			case 37: $('#pic').animate({left: "-=100px"});
+		}
+	});
+});
+</script>
+</body>
+</html>
